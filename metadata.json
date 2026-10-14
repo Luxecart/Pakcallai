@@ -1,0 +1,6 @@
+{
+  "name": "PakCall AI - Pakistani AI Calling Assistant",
+  "description": "Android-first AI call assistant and screening app tailored for Pakistan with Urdu, Punjabi, and English voice screening, spam protection, and privacy controls.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

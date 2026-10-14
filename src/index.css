@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-urdu: 'Noto Sans Arabic', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #070b14;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+}
+
+.font-urdu {
+  font-family: var(--font-urdu);
+  direction: rtl;
+}
+
+/* Custom soundwave animations */
+@keyframes soundwave {
+  0%, 100% { height: 6px; }
+  50% { height: 28px; }
+}
+
+.animate-wave-1 {
+  animation: soundwave 1.2s ease-in-out infinite;
+}
+.animate-wave-2 {
+  animation: soundwave 1.2s ease-in-out infinite 0.2s;
+}
+.animate-wave-3 {
+  animation: soundwave 1.2s ease-in-out infinite 0.4s;
+}
+.animate-wave-4 {
+  animation: soundwave 1.2s ease-in-out infinite 0.6s;
+}
+.animate-wave-5 {
+  animation: soundwave 1.2s ease-in-out infinite 0.3s;
+}
+
+/* Smooth Android-style scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #090e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

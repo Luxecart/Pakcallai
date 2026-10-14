@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.PakCallAI" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryVariant">@color/blue_accent</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/navy_background</item>
+        <item name="android:windowBackground">@color/navy_background</item>
+    </style>
+
+    <style name="Theme.PakCallAI.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/navy_background</item>
+        <item name="android:navigationBarColor">@color/navy_background</item>
+    </style>
+</resources>

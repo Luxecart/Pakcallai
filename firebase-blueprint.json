@@ -1,0 +1,117 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and Pakistani telecom registration details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "format": "email", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "city": { "type": "string", "maxLength": 50 },
+        "carrier": { "type": "string", "maxLength": 30 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "phone"]
+    },
+    "CallRecord": {
+      "title": "CallRecord",
+      "description": "Phone call screening log with transcripts and summaries",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "contactName": { "type": "string", "maxLength": 100 },
+        "callerType": { "type": "string", "maxLength": 30 },
+        "carrier": { "type": "string", "maxLength": 30 },
+        "direction": { "type": "string", "maxLength": 20 },
+        "status": { "type": "string", "maxLength": 30 },
+        "timestamp": { "type": "string" },
+        "durationSeconds": { "type": "number" },
+        "summary": { "type": "string", "maxLength": 1000 },
+        "urgency": { "type": "string", "maxLength": 20 },
+        "sentiment": { "type": "string", "maxLength": 20 },
+        "hasRecording": { "type": "boolean" },
+        "spamReason": { "type": "string", "maxLength": 200 },
+        "isSpamReported": { "type": "boolean" }
+      },
+      "required": ["id", "phoneNumber", "status", "summary"]
+    },
+    "Contact": {
+      "title": "Contact",
+      "description": "Contact with VIP ring-through or AI screening rules",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "relation": { "type": "string", "maxLength": 50 },
+        "category": { "type": "string", "maxLength": 30 },
+        "alwaysScreen": { "type": "boolean" },
+        "carrier": { "type": "string", "maxLength": 30 },
+        "notes": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "name", "phone", "category"]
+    },
+    "AssistantSettings": {
+      "title": "AssistantSettings",
+      "description": "User-specific AI voice persona and call screening rules",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 50 },
+        "language": { "type": "string", "maxLength": 30 },
+        "persona": { "type": "string", "maxLength": 50 },
+        "voicePitch": { "type": "number" },
+        "voiceSpeed": { "type": "number" },
+        "customPromptInstructions": { "type": "string", "maxLength": 2000 },
+        "mandatoryAiDisclosure": { "type": "boolean" },
+        "recordWithConsent": { "type": "boolean" },
+        "screenUnknownCallers": { "type": "boolean" },
+        "autoTranscribe": { "type": "boolean" },
+        "spamFilterLevel": { "type": "string", "maxLength": 30 },
+        "status": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["name", "language", "status"]
+    },
+    "SpamReport": {
+      "title": "SpamReport",
+      "description": "PTA Fraud & Spam Registry complaints",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "category": { "type": "string", "maxLength": 50 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "carrier": { "type": "string", "maxLength": 30 },
+        "reportedAt": { "type": "string" },
+        "ptaReportNumber": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 30 },
+        "reportedBy": { "type": "string" }
+      },
+      "required": ["id", "phoneNumber", "category", "ptaReportNumber", "reportedBy"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile with Pakistani telecom data"
+    },
+    "/users/{userId}/calls/{callId}": {
+      "schema": { "$ref": "#/entities/CallRecord" },
+      "description": "Call records and AI transcripts screened for this user"
+    },
+    "/users/{userId}/contacts/{contactId}": {
+      "schema": { "$ref": "#/entities/Contact" },
+      "description": "Saved contacts and screening directives"
+    },
+    "/users/{userId}/settings/config": {
+      "schema": { "$ref": "#/entities/AssistantSettings" },
+      "description": "Personalized assistant configuration"
+    },
+    "/spam_reports/{reportId}": {
+      "schema": { "$ref": "#/entities/SpamReport" },
+      "description": "Community and PTA spam reports"
+    }
+  }
+}

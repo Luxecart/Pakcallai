@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PakCall AI</string>
+    <string name="app_description">Pakistani AI Calling Assistant &amp; Spam Shield</string>
+    <string name="perm_mic_rationale">PakCall AI requires microphone access for real-time Urdu, Punjabi, and English voice assistance.</string>
+    <string name="perm_phone_rationale">Phone permissions are required to screen incoming calls and identify spam numbers in Pakistan.</string>
+</resources>
